@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DailyBytesDAL/DailyBytesDAL.csproj" />
+  <Project Path="DailyBytesServices/DailyBytesServices.csproj" />
+</Solution>
