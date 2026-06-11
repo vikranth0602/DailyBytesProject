@@ -1,0 +1,271 @@
+<div class="read-page">
+
+  <!-- BACK BUTTON -->
+
+  <button type="button"
+          class="back-btn"
+          (click)="goBack()">
+
+    ← Back to Articles
+
+  </button>
+
+
+  <!-- SKELETON LOADER -->
+
+  <div *ngIf="isLoading"
+       class="skeleton-wrapper">
+
+    <div class="skeleton-card">
+
+      <!-- CATEGORY -->
+
+      <div class="skeleton skeleton-category"></div>
+
+      <!-- TITLE -->
+
+      <div class="skeleton skeleton-title"></div>
+
+      <div class="skeleton skeleton-title short"></div>
+
+      <!-- META -->
+
+      <div class="skeleton-meta">
+
+        <div class="skeleton skeleton-meta-item"></div>
+
+        <div class="skeleton skeleton-meta-item"></div>
+
+      </div>
+
+      <!-- CONTENT -->
+
+      <div class="skeleton skeleton-line"></div>
+
+      <div class="skeleton skeleton-line"></div>
+
+      <div class="skeleton skeleton-line"></div>
+
+      <div class="skeleton skeleton-line"></div>
+
+      <div class="skeleton skeleton-line short"></div>
+
+    </div>
+
+    <!-- COMMENTS SKELETON -->
+
+    <div class="skeleton-comments-wrapper">
+
+      <div class="skeleton-comments-title"></div>
+
+      <div class="skeleton-comment"></div>
+
+      <div class="skeleton-comment"></div>
+
+    </div>
+
+  </div>
+
+  <!--Skeleton Loader End-->
+
+  <!-- ARTICLE -->
+
+  <div *ngIf="!isLoading && article"
+       class="article-card">
+
+    <div class="category-badge">
+
+      {{ article.categoryName }}
+
+    </div>
+
+    <h1>
+
+      {{ article.title }}
+
+    </h1>
+
+    <!-- ARTICLE META -->
+
+    <div class="article-meta">
+
+      <span>
+        ⏱️ {{ readingTime }} min read
+      </span>
+
+    </div>
+
+    <p class="content">
+
+      {{ article.content }}
+
+    </p>
+
+  </div>
+
+  <!-- RATING -->
+
+  <div class="rating-section">
+
+    <h3>
+      Rate this article
+    </h3>
+
+    <div class="stars">
+
+      <span *ngFor="let star of [1,2,3,4,5]"
+            (click)="submitRating(star)"
+            (mouseenter)="hoverRating = star"
+            (mouseleave)="hoverRating = 0"
+            [class.active]="star <= (hoverRating || selectedRating)"
+            [class.disabled]="isSubmittingRating">
+
+        ★
+
+      </span>
+
+    </div>
+
+    <div class="rating-status"
+         *ngIf="selectedRating">
+
+      You rated this article
+
+      <strong>
+
+        {{ selectedRating }}/5
+
+      </strong>
+
+    </div>
+
+    <div class="rating-loading"
+         *ngIf="isSubmittingRating">
+
+      Submitting rating...
+
+    </div>
+
+    <div class="average-rating">
+
+      ★ {{ averageRating }}/5 average rating
+
+    </div>
+
+  </div>
+
+  <!-- COMMENTS -->
+
+  <div class="section-card">
+
+    <h2>
+
+      Comments
+
+    </h2>
+
+    <!-- COMMENT INPUT -->
+
+    <div class="comment-input-box">
+
+      <textarea [(ngModel)]="commentText"
+                [maxlength]="maxCommentLength"
+                placeholder="Write your comment...">
+      </textarea>
+
+      <div class="comment-meta">
+
+        <small class="comment-limit">
+
+          {{ commentText.length }}/{{ maxCommentLength }}
+
+        </small>
+
+      </div>
+
+      <button type="button"
+              class="btn-primary"
+              (click)="addComment()"
+              [disabled]="isSubmittingComment || commentText.trim().length < 3">
+
+        {{ isSubmittingComment ? 'Posting...' : 'Add Comment' }}
+
+      </button>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+
+    <div class="empty-state"
+         *ngIf="comments.length === 0">
+
+      <div class="empty-icon">
+
+        💬
+
+      </div>
+
+      <h3>
+
+        No comments yet
+
+      </h3>
+
+      <p>
+
+        Start the discussion by adding the first comment.
+
+      </p>
+
+    </div>
+
+    <!-- COMMENTS LIST -->
+
+    <div class="comments-container"
+         *ngIf="comments.length > 0">
+
+      <div class="comment-card"
+           *ngFor="let comment of comments">
+
+        <div class="comment-header">
+
+          <div class="user-section">
+
+            <strong>
+
+              {{ comment.userName }}
+
+            </strong>
+
+            <span class="date">
+
+              {{ comment.createdDate | date:'medium' }}
+
+            </span>
+
+          </div>
+
+          <button *ngIf="comment.userId === user.id"
+                  type="button"
+                  class="btn-danger delete-btn"
+                  (click)="deleteComment(comment.id)">
+
+            Delete
+
+          </button>
+
+        </div>
+
+        <p class="comment-message">
+
+          {{ comment.message }}
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

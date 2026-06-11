@@ -1,0 +1,82 @@
+<nav class="navbar">
+
+  <div class="logo">
+
+    DailyBytes
+
+  </div>
+
+  <!-- GUEST -->
+
+  <div class="nav-links"
+       *ngIf="!isLoggedIn">
+
+    <a routerLink="/"
+       routerLinkActive="active-link"
+       [routerLinkActiveOptions]="{ exact: true }">
+
+      Home
+
+    </a>
+
+    <a routerLink="/auth"
+       [queryParams]="{ mode: 'login' }">
+
+       Login
+
+    </a>
+
+    <a routerLink="/auth"
+       [queryParams]="{ mode: 'register' }">
+      
+       Register
+
+    </a>
+
+  </div>
+
+  <!-- AUTH USER -->
+
+  <div class="nav-links"
+       *ngIf="isLoggedIn">
+
+    <span class="welcome">
+
+      Welcome,
+      {{ currentUser?.firstName }}
+
+    </span>
+
+    <a routerLink="/"
+       routerLinkActive="active-link"
+       [routerLinkActiveOptions]="{ exact: true }">
+
+      Home
+
+    </a>
+
+    <a routerLink="/articles"
+       routerLinkActive="active-link">
+
+      Articles
+
+    </a>
+
+    <a routerLink="/bookmarks"
+       routerLinkActive="active-link">
+
+      Bookmarks
+
+    </a>
+
+    <button type="button"
+            class="logout-btn"
+            (click)="logout()">
+
+      Logout
+
+    </button>
+
+  </div>
+
+</nav>

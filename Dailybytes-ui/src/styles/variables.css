@@ -1,0 +1,83 @@
+:root {
+  /* =========================
+     BRAND PALETTE
+  ========================= */
+
+  --color-primary: #00494f; /* Sherpa Blue */
+  --color-primary-dark: #00373c;
+  --color-secondary: #6ba8a9; /* Acapulco */
+
+  --color-accent: #b16a45; /* Santa Fe */
+  --color-accent-soft: #e8cfae; /* Pancho */
+
+  --color-danger: #7a1f2b; /* Maroon */
+  --color-danger-dark: #a61e1e;
+  /* =========================
+     SURFACES
+  ========================= */
+
+  --color-background: #f4f8f9;
+  --color-surface: #ffffff;
+  --color-surface-soft: #edf4f5;
+  /* =========================
+     TEXT
+  ========================= */
+
+  --color-text-primary: #102a43;
+  --color-text-secondary: #486581;
+  --color-text-muted: #64748b;
+  /* =========================
+     BORDERS
+  ========================= */
+
+  --color-border: #d9e2ec;
+  --color-border-soft: rgba(0,73,79,0.10);
+  /* =========================
+     STATES
+  ========================= */
+
+  --color-success: #2f855a;
+  --color-warning: #dd6b20;
+  --color-error: #c53030;
+  /* =========================
+     SHADOWS
+  ========================= */
+
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-md: 0 8px 24px rgba(0,73,79,0.08);
+  --shadow-lg: 0 16px 32px rgba(0,73,79,0.14);
+  /* =========================
+     BORDER RADIUS
+  ========================= */
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  /* =========================
+     SPACING
+  ========================= */
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  /* =========================
+     TRANSITIONS
+  ========================= */
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  /* =========================
+     LAYOUT
+  ========================= */
+
+  --container-width: 1200px;
+  --content-width: 760px;
+  --navbar-bg: rgba(14, 54, 61, 0.96);
+  --navbar-logo: #f3e9dc;
+  --navbar-accent: #d89b5c;
+  --navbar-accent-hover: #f4c27a;
+}

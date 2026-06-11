@@ -1,0 +1,80 @@
+/* =========================
+   NOTIFICATION WRAPPER
+========================= */
+
+.notification-wrapper {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.notification {
+  min-width: 240px;
+  max-width: 320px;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  animation: toastFadeIn 0.25s ease;
+  word-break: break-word;
+}
+
+  /* SUCCESS */
+
+  .notification.success {
+    background: var(--color-success);
+  }
+
+  /* ERROR */
+
+  .notification.error {
+    background: var(--color-danger);
+  }
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes toastFadeIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .notification-wrapper {
+    top: 70px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .notification {
+    width: 100%;
+    max-width: 100%;
+    min-width: unset;
+    box-sizing: border-box;
+  }
+}
+
+

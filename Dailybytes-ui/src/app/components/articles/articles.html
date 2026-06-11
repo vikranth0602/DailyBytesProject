@@ -1,0 +1,167 @@
+<div class="articles-page">
+
+  <!-- HEADER -->
+
+  <div class="articles-header">
+
+    <div class="header-content">
+
+      <h1>
+        Explore Articles
+      </h1>
+
+      <p class="header-subtitle">
+        Discover curated tech reads, insights and learning content.
+      </p>
+
+    </div>
+
+    <!-- FILTER -->
+
+      <div class="filter-box">
+
+        <select [(ngModel)]="selectedCategory"
+                (change)="filterArticles()">
+
+          <option value="">
+            All Categories
+          </option>
+
+          <option *ngFor="let category of categories"
+                  [value]="category.id">
+
+            {{ category.name }}
+
+          </option>
+
+        </select>
+
+      </div>
+    </div>
+
+    <!-- EMPTY -->
+
+    <div class="empty-state"
+         *ngIf="
+       !isLoading &&
+       filteredArticles.length === 0
+       ">
+
+      <div class="empty-icon">
+        📚
+      </div>
+
+      <h3>
+        No articles found
+      </h3>
+
+      <p>
+        Try changing the category filter or check back later.
+      </p>
+
+    </div>
+
+    <!-- SKELETON -->
+
+    <div class="articles-grid"
+         *ngIf="isLoading">
+
+      <div class="skeleton-card"
+           *ngFor="let item of [1,2,3,4,5,6]">
+
+        <div class="skeleton-bookmark"></div>
+
+        <div class="skeleton-title"></div>
+
+        <div class="skeleton-title short"></div>
+
+        <div class="skeleton-line"></div>
+
+        <div class="skeleton-line"></div>
+
+        <div class="skeleton-line short"></div>
+
+        <div class="skeleton-footer"></div>
+
+      </div>
+
+    </div>
+
+    <!-- ARTICLES -->
+
+    <div class="articles-grid"
+         *ngIf="
+         !isLoading &&
+         filteredArticles.length>
+      0
+      ">
+
+      <div class="article-card"
+           *ngFor="let article of filteredArticles">
+
+        <!-- CATEGORY -->
+
+        <span class="category">
+
+          {{ article.categoryName }}
+
+        </span>
+
+        <!-- BOOKMARK -->
+
+        <button type="button"
+                class="bookmark-btn"
+                [class.active]="article.isBookmarked"
+                (click)="toggleBookmark(article.id)"
+                [disabled]="bookmarkLoadingId === article.id">
+
+          <span *ngIf="bookmarkLoadingId === article.id">
+
+            ...
+
+          </span>
+
+          <span *ngIf="bookmarkLoadingId !== article.id"
+                class="bookmark-icon">
+
+            {{ article.isBookmarked ? '★' : '☆' }}
+
+          </span>
+
+        </button>
+
+        <!-- TITLE -->
+
+        <h2>
+
+          {{ article.title }}
+
+        </h2>
+
+        <!-- PREVIEW -->
+
+        <p class="preview-content">
+
+          {{ article.previewText }}
+
+        </p>
+
+        <!-- FOOTER -->
+
+        <div class="card-footer">
+
+          <button type="button"
+                  class="read-btn"
+                  (click)="readArticle(article.id)">
+
+            Read →
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>

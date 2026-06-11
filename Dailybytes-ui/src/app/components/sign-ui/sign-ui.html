@@ -1,0 +1,249 @@
+
+<div class="sign-page">
+
+  <div class="auth-card">
+
+    <h1>DailyBytes</h1>
+
+    <!-- LOGIN -->
+
+    <div *ngIf="isLoginMode">
+
+      <h2>Login</h2>
+
+      <form [formGroup]="loginForm"
+            (ngSubmit)="login()">
+
+        <!-- EMAIL -->
+
+        <input type="email"
+               placeholder="Email"
+               formControlName="email">
+
+        <div class="validation-error"
+             *ngIf="
+            loginForm.get('email')?.touched &&
+            loginForm.get('email')?.invalid
+          ">
+
+          <span *ngIf="
+            loginForm.get('email')?.errors?.['required']
+          ">
+            Email is required
+          </span>
+
+          <span *ngIf="
+            loginForm.get('email')?.errors?.['email']
+          ">
+            Invalid email format
+          </span>
+
+        </div>
+
+        <!-- PASSWORD -->
+
+        <div class="password-wrapper">
+
+          <input [type]="showLoginPassword ? 'text' : 'password'"
+                 formControlName="password"
+                 placeholder="Password">
+
+          <button type="button"
+                  class="toggle-password"
+                  (click)="showLoginPassword = !showLoginPassword">
+
+            {{ showLoginPassword ? 'Hide' : 'Show' }}
+
+          </button>
+
+        </div>
+
+        <div class="validation-error"
+             *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.invalid
+          ">
+
+          <span *ngIf="
+            loginForm.get('password')?.errors?.['required']
+          ">
+            Password is required
+          </span>
+
+          <span *ngIf="
+            loginForm.get('password')?.errors?.['minlength']
+          ">
+            Minimum 8 characters required
+          </span>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button type="submit"
+                class="btn-primary"
+                [disabled]="loginForm.invalid || isLoading">
+
+          {{ isLoading ? 'Logging in...' : 'Login' }}
+
+        </button>
+
+      </form>
+
+      <p class="auth-footer">
+
+        New User ?
+
+        <span (click)="switchMode()">
+
+          Register
+
+        </span>
+
+      </p>
+
+    </div>
+
+    <!-- REGISTER -->
+
+    <div *ngIf="!isLoginMode">
+
+      <h2>Register</h2>
+
+      <form [formGroup]="registerForm"
+            (ngSubmit)="register()">
+
+        <!-- FIRST NAME -->
+
+        <input type="text"
+               placeholder="First Name"
+               formControlName="firstName">
+
+        <div class="validation-error"
+             *ngIf="
+            registerForm.get('firstName')?.touched &&
+            registerForm.get('firstName')?.invalid
+          ">
+
+          First name is required
+
+        </div>
+
+        <!-- LAST NAME -->
+
+        <input type="text"
+               placeholder="Last Name"
+               formControlName="lastName">
+
+        <div class="validation-error"
+             *ngIf="
+            registerForm.get('lastName')?.touched &&
+            registerForm.get('lastName')?.invalid
+          ">
+
+          Last name is required
+
+        </div>
+
+        <!-- EMAIL -->
+
+        <input type="email"
+               placeholder="Email"
+               formControlName="email">
+
+        <div class="validation-error"
+             *ngIf="
+            registerForm.get('email')?.touched &&
+            registerForm.get('email')?.invalid
+          ">
+
+          <span *ngIf="
+            registerForm.get('email')?.errors?.['required']
+          ">
+            Email is required
+          </span>
+
+          <span *ngIf="
+            registerForm.get('email')?.errors?.['email']
+          ">
+            Invalid email format
+          </span>
+
+        </div>
+
+        <!-- PASSWORD -->
+
+        <div class="password-wrapper">
+
+          <input [type]="showRegisterPassword ? 'text' : 'password'"
+                 formControlName="password"
+                 placeholder="Password">
+
+          <button type="button"
+                  class="toggle-password"
+                  (click)="showRegisterPassword = !showRegisterPassword">
+
+            {{ showRegisterPassword ? 'Hide' : 'Show' }}
+
+          </button>
+
+        </div>
+
+        <div class="validation-error"
+             *ngIf="
+            registerForm.get('password')?.touched &&
+            registerForm.get('password')?.invalid
+          ">
+
+          <span *ngIf="
+            registerForm.get('password')?.errors?.['required']
+          ">
+            Password is required
+          </span>
+
+          <span *ngIf="
+            registerForm.get('password')?.errors?.['minlength']
+          ">
+            Minimum 8 characters required
+          </span>
+
+          <span *ngIf="
+            registerForm.get('password')?.errors?.['pattern']
+          ">
+            Must contain uppercase, lowercase,
+            number and special character
+          </span>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button type="submit"
+                class="btn-primary"
+                [disabled]="registerForm.invalid || isLoading">
+
+          {{ isLoading ? 'Registering...' : 'Register' }}
+
+        </button>
+
+      </form>
+
+      <p class="auth-footer">
+
+        Already Registered ?
+
+        <span (click)="switchMode()">
+
+          Login
+
+        </span>
+
+      </p>
+
+    </div>
+
+
+  </div>
+
+</div>
+
