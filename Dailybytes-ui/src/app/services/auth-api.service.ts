@@ -16,14 +16,20 @@ import { LoginRequestModel }
 import { RegisterRequestModel }
   from '../models/auth/register-request.model';
 
+import { environment } from '../../environments/environment';
+
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthApiService {
 
-  private baseUrl =
-    'https://localhost:7092/api/auth';
+  
+
+  private baseUrl = `${environment.apiUrl}/auth`;
+
+
 
   constructor(
     private http: HttpClient

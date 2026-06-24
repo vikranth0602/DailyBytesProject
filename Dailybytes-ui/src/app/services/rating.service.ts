@@ -1,25 +1,17 @@
 import { Injectable } from '@angular/core';
 
-import {
-  HttpClient,
-  HttpHeaders
-} from '@angular/common/http';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
 
-import {
-  Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 
-import {
-  ApiResponse
-} from '../models/shared/api-response.model';
+import { ApiResponse } from '../models/shared/api-response.model';
 
-import {
-  RatingRequestModel
-} from '../models/rating/rating-request.model';
+import { RatingRequestModel } from '../models/rating/rating-request.model';
 
-import {
-  UserModel
-} from '../models/user/user.model';
+import { UserModel } from '../models/user/user.model';
+
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +19,8 @@ import {
 
 export class RatingService {
 
-  private baseUrl =
-    'https://localhost:7092/api/rating';
+
+  private baseUrl = `${environment.apiUrl}/rating`;
 
   constructor(
     private http: HttpClient

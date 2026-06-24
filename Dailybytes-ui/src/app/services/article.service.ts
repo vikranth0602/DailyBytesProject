@@ -10,6 +10,7 @@ import { ArticleListModel } from '../models/article/article-list.model';
 
 import { ArticleDetailModel } from '../models/article/article-detail.model';
 
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -17,7 +18,8 @@ import { ArticleDetailModel } from '../models/article/article-detail.model';
 })
 export class ArticleService {
 
-  private baseUrl = 'https://localhost:7092/api/article';
+ 
+  private baseUrl = `${environment.apiUrl}/article`;
 
   constructor( private http: HttpClient ) { }
 

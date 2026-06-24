@@ -13,14 +13,16 @@ import { CommentModel }
 import { CommentRequestModel }
   from '../models/comment/comment-request.model';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class CommentService {
 
-  private baseUrl =
-    'https://localhost:7092/api/comment';
+
+  private baseUrl = `${environment.apiUrl}/comment`;
 
   constructor(
     private http: HttpClient

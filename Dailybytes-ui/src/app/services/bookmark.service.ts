@@ -10,14 +10,17 @@ import { BookmarkRequestModel } from '../models/bookmark/bookmark-request.model'
 
 import { BookmarkResponseModel } from '../models/bookmark/bookmark.model';
 
+import { environment } from '../../environments/environment';
+
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class BookmarkService {
 
-  private baseUrl =
-    'https://localhost:7092/api/bookmark';
+  
+  private baseUrl = `${environment.apiUrl}/bookmark`;
 
   constructor(
     private http: HttpClient

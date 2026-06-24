@@ -4,6 +4,7 @@ using DailyBytesDAL.Repositories.Implementations;
 using DailyBytesDAL.Repositories.Interfaces;
 
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 using System.Text.Json.Serialization;
 
@@ -69,15 +70,9 @@ builder.Services.AddSwaggerGen();
 // =========================
 
 builder.Services.AddDbContext<DailyBytesDbContext>(options =>
-
-    options.UseSqlServer(
-
-        builder.Configuration.GetConnectionString(
-            "DefaultConnection"
-        )
-
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("DefaultConnection")
     )
-
 );
 
 
@@ -139,6 +134,95 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// =========================
+// Seed Data
+// =========================
+
+using (var scope = app.Services.CreateScope())
+{
+    var context =
+        scope.ServiceProvider
+             .GetRequiredService<DailyBytesDbContext>();
+
+    context.Database.Migrate();
+
+    if (!context.Categories.Any())
+    {
+        context.Categories.AddRange(
+
+            new Category
+            {
+                Name = "Technology"
+            },
+
+            new Category
+            {
+                Name = "Programming"
+            },
+
+            new Category
+            {
+                Name = "Artificial Intelligence"
+            },
+
+            new Category
+            {
+                Name = "Cloud Computing"
+            }
+
+        );
+
+        context.SaveChanges();
+    }
+
+    if (!context.Articles.Any())
+    {
+        var technology =
+            context.Categories
+                   .First(c => c.Name == "Technology");
+
+        var programming =
+            context.Categories
+                   .First(c => c.Name == "Programming");
+
+        var ai =
+            context.Categories
+                   .First(c => c.Name == "Artificial Intelligence");
+
+        context.Articles.AddRange(
+
+            new Article
+            {
+                Title = "Introduction to ASP.NET Core",
+                Content =
+                    "ASP.NET Core is a modern framework used for building web applications and APIs.",
+
+                CategoryId = programming.Id
+            },
+
+            new Article
+            {
+                Title = "What is Cloud Computing?",
+                Content =
+                    "Cloud computing provides on-demand access to computing resources over the internet.",
+
+                CategoryId = technology.Id
+            },
+
+            new Article
+            {
+                Title = "Getting Started with Artificial Intelligence",
+                Content =
+                    "Artificial Intelligence enables machines to simulate human intelligence.",
+
+                CategoryId = ai.Id
+            }
+
+        );
+
+        context.SaveChanges();
+    }
+}
 
 
 // =========================

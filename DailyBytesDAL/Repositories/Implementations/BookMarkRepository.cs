@@ -11,8 +11,7 @@ namespace DailyBytesDAL.Repositories.Implementations
     {
         private readonly DailyBytesDbContext _context;
 
-        public BookmarkRepository(
-            DailyBytesDbContext context)
+        public BookmarkRepository( DailyBytesDbContext context)
         {
             _context = context;
         }

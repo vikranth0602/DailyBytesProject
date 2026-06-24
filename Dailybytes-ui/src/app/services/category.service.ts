@@ -8,14 +8,16 @@ import { ApiResponse } from '../models/shared/api-response.model';
 
 import { CategoryModel } from '../models/category/category.model';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class CategoryService {
 
-  private baseUrl =
-    'https://localhost:7092/api/category';
+ 
+  private baseUrl = `${environment.apiUrl}/category`;
 
   constructor(
     private http: HttpClient
