@@ -1,0 +1,25 @@
+# Node
+node_modules
+dist
+.angular
+
+# Git
+.git
+
+# IDE
+.vscode
+.idea
+
+# Logs
+*.log
+
+# Build outputs
+bin
+obj
+
+# Angular build
+Dailybytes-ui/dist
+
+# OS
+.DS_Store
+Thumbs.db
