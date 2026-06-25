@@ -105,27 +105,25 @@ builder.Services.AddScoped<
     ICommentRepository,
     CommentRepository>();
 
-
+// -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+builder.WebHost.ConfigureKestrel(options =>
+{
+    var port = Environment.GetEnvironmentVariable("PORT") ?? "80";
+    options.ListenAnyIP(int.Parse(port));
+});
 
 // =========================
 // CORS
 // =========================
 
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(
-        "AllowAngular",
-
-        policy =>
+    options.AddPolicy( "AllowAngular", policy =>
         {
-            policy
-                .WithOrigins(
-                    "http://localhost:4200"
-                )
-
-                .AllowAnyMethod()
-
-                .AllowAnyHeader();
+                        policy.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader();
         }
     );
 });
@@ -242,7 +240,9 @@ if (app.Environment.IsDevelopment())
 // Middleware Pipeline
 // =========================
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseCors("AllowAngular");
 
@@ -251,5 +251,8 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+
 
 app.Run();
