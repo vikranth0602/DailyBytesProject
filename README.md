@@ -59,6 +59,24 @@ https://dailybytes.netlify.app
 
 ---
 
+## UI / UX
+
+The application follows a consistent and reusable design system focused on simplicity and readability.
+
+### Design Principles
+
+* 70-20-10 color distribution for visual hierarchy
+* Centralized design tokens using CSS variables
+* Global stylesheet for consistent typography, spacing, and component styling
+* Reusable button system (Primary, Secondary, Ghost, Danger)
+* Shared card components with consistent elevation and hover states
+* Responsive layout optimized for desktop and mobile devices
+* Accessible color contrast and readable typography
+* Smooth transitions, hover effects, and loading feedback
+* Customized scrollbar and text selection styling for a polished user experience
+
+---
+
 # Technology Stack
 
 ## Backend
