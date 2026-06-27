@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://your-live-api.com/api'
+  apiUrl: 'https://dailybytesproject.onrender.com/api'
 };
