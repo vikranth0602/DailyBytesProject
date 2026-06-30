@@ -253,48 +253,6 @@ Current implementation includes:
 
 ---
 
-# Running Locally
-
-## Backend
-
-```bash
-git clone <repository>
-
-cd DailyBytes
-
-dotnet restore
-
-dotnet ef database update
-
-dotnet run
-```
-
-Backend runs on
-
-```
-http://localhost:5110
-```
-
----
-
-## Frontend
-
-```bash
-cd DailyBytes-UI
-
-npm install
-
-ng serve
-```
-
-Frontend runs on
-
-```
-http://localhost:4200
-```
-
----
-
 # Skills Demonstrated
 
 - Full Stack Development
