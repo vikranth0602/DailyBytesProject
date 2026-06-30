@@ -1,16 +1,22 @@
-# DailyBytes
+# 📚 DailyBytes
 
-A full-stack article management platform built using **ASP.NET Core 8 Web API**, **Angular 17**, **Entity Framework Core**, and **SQLite**.
+A full-stack article management platform built with **ASP.NET Core Web API**, **Angular**, **Entity Framework Core**, and **SQLite**.
 
-DailyBytes allows users to register, authenticate using JWT, browse articles, filter by category, bookmark articles, submit ratings, and participate in discussions through comments.
+DailyBytes allows users to browse articles, authenticate securely, bookmark articles, submit ratings, and participate through comments. The project demonstrates modern full-stack development practices, REST API design, responsive UI development, and cloud deployment.
+
+🌐 **Live Application**
+
+https://dailybytes.netlify.app
 
 ---
 
-# Live Demo
+# Project Overview
 
-**Application**
+DailyBytes was built as a portfolio project to strengthen practical experience in modern web application development.
 
-https://dailybytes.netlify.app
+The application follows a layered backend architecture using repositories, DTOs, entity mapping, middleware, and REST APIs while the frontend is developed using Angular standalone components with responsive UI principles and reusable services.
+
+The project also demonstrates cloud deployment using Docker, Render, and Netlify.
 
 ---
 
@@ -18,62 +24,61 @@ https://dailybytes.netlify.app
 
 ## Authentication
 
-* User Registration
-* User Login
-* JWT Authentication
-* Protected API Endpoints
-* Angular Route Guards
-* HTTP Authorization Interceptor
-* BCrypt Password Hashing
-
-## Articles
-
-* Browse Articles
-* Read Full Articles
-* Category Filtering
-* Estimated Reading Time
-
-## Bookmarks
-
-* Add Bookmark
-* Remove Bookmark
-* View Personal Bookmarks
-
-## Ratings
-
-* Submit Ratings
-* Update Existing Ratings
-* Average Rating Calculation
-
-## Comments
-
-* Add Comments
-* Delete Comments
-* View Article Discussions
-
-## User Experience
-
-* Global Notification System
-* Loading Indicators
-* Responsive Design
+- User Registration
+- User Login
+- Password Hashing using BCrypt
+- JWT Authentication
+- Route Guards
+- HTTP Interceptor for Authorization Header
+- Persistent Login using Local Storage
 
 ---
 
-## UI / UX
+## Articles
 
-The application follows a consistent and reusable design system focused on simplicity and readability.
+- Browse all articles
+- Read complete article
+- Category based filtering
+- Estimated reading time
+- Responsive article layout
 
-### Design Principles
+---
 
-* 70-20-10 color distribution for visual hierarchy
-* Centralized design tokens using CSS variables
-* Global stylesheet for consistent typography, spacing, and component styling
-* Reusable button system (Primary, Secondary, Ghost, Danger)
-* Shared card components with consistent elevation and hover states
-* Responsive layout optimized for desktop and mobile devices
-* Accessible color contrast and readable typography
-* Smooth transitions, hover effects, and loading feedback
-* Customized scrollbar and text selection styling for a polished user experience
+## Bookmarks
+
+- Add bookmark
+- Remove bookmark
+- Dedicated bookmarks page
+- Bookmark state synchronization
+
+---
+
+## Ratings
+
+- 5-Star rating system
+- Average article rating
+- Update existing rating
+- Prevent duplicate ratings
+
+---
+
+## Comments
+
+- Add comments
+- Delete comments
+- Comment validation
+- Latest comments displayed first
+
+---
+
+## User Experience
+
+- Responsive Design
+- Notification System
+- Global Design System
+- Reusable Button Components
+- Loading States
+- Consistent Error Handling
 
 ---
 
@@ -81,70 +86,125 @@ The application follows a consistent and reusable design system focused on simpl
 
 ## Backend
 
-* ASP.NET Core 8 Web API
-* Entity Framework Core
-* SQLite
-* Repository Pattern
-* DTO Pattern
-* Generic API Response Wrapper
-* Exception Handling Middleware
-* Data Annotation Validation
-* BCrypt Password Hashing
-* JWT Authentication
+- ASP.NET Core 8 Web API
+- Entity Framework Core
+- SQLite
+- Repository Pattern
+- DTO Pattern
+- Extension Mapper Classes
+- BCrypt Password Hashing
+- JWT Authentication
+- Global Exception Middleware
+
+---
 
 ## Frontend
 
-* Angular 17
-* Standalone Components
-* Reactive Forms
-* RxJS
-* Functional Route Guards
-* HTTP Interceptors
-* Angular Router
+- Angular 17
+- TypeScript
+- Standalone Components
+- RxJS
+- Reactive Forms
+- Angular Router
+- Route Guards
+- HTTP Interceptors
 
-## Deployment
+---
 
-* Docker
-* Multi-stage Docker Build
-* Render
-* Netlify
-* GitHub Automatic Deployments
+## UI / UX
+
+- Responsive Design
+- CSS Variables
+- Global Design System
+- Consistent Typography
+- Color Theory (70-20-10)
+- Notification System
+
+---
+
+## DevOps
+
+- Docker
+- Multi-stage Docker Build
+- Render Deployment
+- Netlify Deployment
+- GitHub Version Control
 
 ---
 
 # Project Architecture
 
-### Backend
+```
+Angular Frontend
 
-Controllers
+        │
 
-↓
+        ▼
 
-Repositories
+ASP.NET Core Web API
 
-↓
+        │
+
+        ▼
+
+Repository Layer
+
+        │
+
+        ▼
 
 Entity Framework Core
 
-↓
+        │
 
-SQLite
+        ▼
 
-### Frontend
+SQLite Database
+```
 
-Angular Components
+---
 
-↓
+# Project Structure
 
-Services
+```
+DailyBytes
 
-↓
+│
+├── DailyBytesServices
+│     ├── Controllers
+│     ├── DTOs
+│     ├── Mappers
+│     ├── Middleware
+│     └── Helpers
+│
+├── DailyBytesDAL
+│     ├── Models
+│     ├── Repositories
+│     └── DbContext
+│
+└── DailyBytes-UI
+      ├── Components
+      ├── Services
+      ├── Models
+      ├── Guards
+      ├── Interceptors
+      └── Shared
+```
 
-REST API
+---
 
-↓
+# REST API Highlights
 
-ASP.NET Core Web API
+The backend exposes RESTful endpoints for:
+
+- Authentication
+- Articles
+- Categories
+- Bookmarks
+- Ratings
+- Comments
+
+Each endpoint returns a standardized API response structure.
 
 ---
 
@@ -152,124 +212,127 @@ ASP.NET Core Web API
 
 ## Frontend
 
-Hosted on **Netlify**
-
-* Angular Production Build
-* Single Page Application (SPA) Routing
-* HTTPS Enabled
-* Production Environment Configuration
+- Hosted on Netlify
+- Production Angular Build
+- HTTPS Enabled
 
 ## Backend
 
-Hosted on **Render**
-
-* ASP.NET Core 8 Web API
-* Docker Container
-* Multi-stage Docker Build
-* Automatic Deployments from GitHub
-* Automatic Database Migration
-* Automatic Seed Data
-
-## Database
-
-SQLite
-
-On application startup:
-
-* Applies Entity Framework Core Migrations
-* Creates the database if required
-* Seeds Categories
-* Seeds Articles
+- Hosted on Render
+- Docker Container
+- Multi-stage Docker Build
+- Automatic Database Migration
+- Automatic Seed Data
 
 ---
 
-# DevOps & Deployment
+# Database
 
-This project demonstrates:
+SQLite is used as the primary database.
 
-* Git Version Control
-* GitHub Repository Management
-* Docker Containerization
-* Multi-stage Docker Builds
-* Cloud Deployment
-* GitHub-based Automatic Deployment
-* Environment-specific Configuration
-* Entity Framework Core Migrations
-* Database Seeding
-* Frontend & Backend Integration
-* CORS Configuration
+Entity Framework Core handles:
+
+- Database Migrations
+- Entity Relationships
+- Data Access
+- Automatic Database Creation
+- Initial Seed Data
 
 ---
 
-# Project Structure
+# Security
 
-### Backend
+Current implementation includes:
 
-* Controllers
-* DTOs
-* Mappers
-* Middleware
-* Models
-* Repositories
-
-### Frontend
-
-* Components
-* Services
-* Models
-* Guards
-* Interceptors
+- BCrypt Password Hashing
+- JWT Authentication
+- Protected Routes
+- Authorization Header Interceptor
+- Request Validation
+- Global Exception Handling
 
 ---
 
-# Technologies
+# Running Locally
 
-* C#
-* ASP.NET Core 8
-* Entity Framework Core
-* SQLite
-* Angular 17
-* TypeScript
-* HTML5
-* CSS3
-* RxJS
-* Docker
-* JWT
-* BCrypt
-* Git
-* GitHub
-* Netlify
-* Render
+## Backend
+
+```bash
+git clone <repository>
+
+cd DailyBytes
+
+dotnet restore
+
+dotnet ef database update
+
+dotnet run
+```
+
+Backend runs on
+
+```
+http://localhost:5110
+```
+
+---
+
+## Frontend
+
+```bash
+cd DailyBytes-UI
+
+npm install
+
+ng serve
+```
+
+Frontend runs on
+
+```
+http://localhost:4200
+```
+
+---
+
+# Skills Demonstrated
+
+- Full Stack Development
+- REST API Design
+- Angular SPA Development
+- Entity Framework Core
+- Repository Pattern
+- DTO Mapping
+- Authentication
+- Responsive UI Development
+- Cloud Deployment
+- Docker
+- Git & GitHub
+- Exception Handling
+- State Management
+- Component-Based Architecture
 
 ---
 
 # Future Improvements
 
-* Refresh Token Authentication
-* Role-Based Authorization
-* Service Layer
-* Unit Testing
-* Pagination
-* Article Search
-* User Profile
-* AutoMapper
-* Structured Logging
-* Performance Optimizations
+The project will continue evolving with planned enhancements including:
+
+- Complete JWT Authorization
+- Service Layer Refactoring
+- Role-Based Authorization
+- Refresh Tokens
+- Search & Pagination
+- User Profile Management
+- Unit Testing
+- Integration Testing
+- Logging
+- Performance Optimizations
 
 ---
 
 # Learning Outcomes
 
-This project provided practical experience with:
+This project provided practical experience in designing and building a complete full-stack web application using ASP.NET Core and Angular.
 
-* Full-Stack Web Development
-* REST API Design
-* Authentication & Authorization
-* Entity Framework Core
-* Angular Application Architecture
-* Repository Pattern
-* DTO Mapping
-* Exception Handling
-* Docker Deployment
-* Cloud Hosting
-* Production Environment Configuration
+It strengthened understanding of REST API development, Entity Framework Core, authentication, responsive frontend development, repository-based architecture, Docker containerization, cloud deployment, and frontend-backend integration.
